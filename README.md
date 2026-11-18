@@ -1,13 +1,13 @@
 # Blackjack Analyst
 
-[![Live demo](https://img.shields.io/badge/Live_demo-Open_app-2ea44f?style=flat)](https://unknown-x0.github.io/BlackjackAnalyst/)
-[![Site CI](https://github.com/UNKNOWN-X0/BlackjackAnalyst/actions/workflows/jekyll-docker.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/BlackjackAnalyst/actions/workflows/jekyll-docker.yml)
+[![Live demo](https://img.shields.io/badge/Live_demo-Open_app-2ea44f?style=flat)](https://unknown-x0.github.io/Blackjack-Analyst/)
+[![Site CI](https://github.com/UNKNOWN-X0/Blackjack-Analyst/actions/workflows/jekyll-docker.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/Blackjack-Analyst/actions/workflows/jekyll-docker.yml)
 
 **Explore blackjack starting-hand outcomes with Monte Carlo simulation.**
 
 Blackjack Analyst is a browser-based simulator built with vanilla HTML, CSS, and JavaScript. It estimates win, loss, and tie rates for all **1,326 unique two-card combinations** from a single 52-card deck, using configurable player and dealer hit/stand thresholds.
 
-[**Open the app**](https://unknown-x0.github.io/BlackjackAnalyst/) · [Report an issue](https://github.com/UNKNOWN-X0/BlackjackAnalyst/issues)
+[**Open the app**](https://unknown-x0.github.io/Blackjack-Analyst/) · [Report an issue](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues)
 
 ## Features
 
@@ -26,8 +26,8 @@ Blackjack Analyst is a browser-based simulator built with vanilla HTML, CSS, and
 Clone the repository, then open its folder in VS Code:
 
 ```sh
-git clone https://github.com/UNKNOWN-X0/BlackjackAnalyst.git
-cd BlackjackAnalyst
+git clone https://github.com/UNKNOWN-X0/Blackjack-Analyst.git
+cd Blackjack-Analyst
 ```
 
 With Microsoft's **Live Preview** extension installed, open `index.html` and use **Live Preview: Show Preview** from the Command Palette.
@@ -92,7 +92,7 @@ Grouped percentages average the per-hand percentages already rounded to one deci
 ## Project structure
 
 ```text
-BlackjackAnalyst/
+Blackjack-Analyst/
 ├── index.html          # Page structure and module entry point
 ├── styles.css          # Layout, theme, and responsive styling
 ├── js/
