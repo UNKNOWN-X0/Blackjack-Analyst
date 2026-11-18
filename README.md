@@ -1,13 +1,11 @@
 # Blackjack Analyst
 
-[![Live demo](https://img.shields.io/badge/Live_demo-Open_app-2ea44f?style=flat)](https://unknown-x0.github.io/Blackjack-Analyst/)
-[![Site CI](https://github.com/UNKNOWN-X0/Blackjack-Analyst/actions/workflows/jekyll-docker.yml/badge.svg?branch=main)](https://github.com/UNKNOWN-X0/Blackjack-Analyst/actions/workflows/jekyll-docker.yml)
+[![Live site](https://img.shields.io/badge/live%20site-GitHub%20Pages-2ea44f?logo=github)](https://unknown-x0.github.io/Blackjack-Analyst/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-**Explore blackjack starting-hand outcomes with Monte Carlo simulation.**
+A browser-based Monte Carlo simulator for blackjack starting hands. It estimates win, loss, and tie rates for all **1,326 unique two-card combinations** from a single 52-card deck, using configurable player and dealer hit/stand thresholds.
 
-Blackjack Analyst is a browser-based simulator built with vanilla HTML, CSS, and JavaScript. It estimates win, loss, and tie rates for all **1,326 unique two-card combinations** from a single 52-card deck, using configurable player and dealer hit/stand thresholds.
-
-[**Open the app**](https://unknown-x0.github.io/Blackjack-Analyst/) · [Report an issue](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues)
+**[Open Blackjack Analyst →](https://unknown-x0.github.io/Blackjack-Analyst/)** · [Report an issue](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues)
 
 ## Features
 
@@ -19,9 +17,9 @@ Blackjack Analyst is a browser-based simulator built with vanilla HTML, CSS, and
 - **CSV export:** download summaries grouped by starting total plus results for every individual combination.
 - **No build step:** runs in the browser with no runtime dependencies or backend.
 
-## Quick start
+## Getting started
 
-### Run locally in VS Code
+### Run locally
 
 Clone the repository, then open its folder in VS Code:
 
@@ -60,15 +58,15 @@ Each round starts with a freshly shuffled single deck. The selected starting car
 
 ### Current rule behavior
 
-| Rule                         | Implementation                                                                                                                                   |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Player threshold             | Hit below the selected total; stand at or above it. This applies to both hard and soft hands despite the UI's “Hard” labels.                     |
-| Dealer threshold             | Hit below the selected total; stand above it. At the threshold, hit a soft hand when the toggle is enabled.                                      |
+| Rule | Implementation |
+| --- | --- |
+| Player threshold | Hit below the selected total; stand at or above it. This applies to both hard and soft hands despite the UI's “Hard” labels. |
+| Dealer threshold | Hit below the selected total; stand above it. At the threshold, hit a soft hand when the toggle is enabled. |
 | “Dealer Hits Soft 17” toggle | At the default threshold of 17, this means hit soft 17. With another dealer threshold, the toggle applies to a soft hand at that selected total. |
-| Classic mode                 | Compare totals after checking for busts; Five-Card Charlie is disabled.                                                                          |
-| Modded mode                  | A final hand of five or more cards totaling 21 or less qualifies for Charlie. The player is checked first, before the dealer plays.              |
-| Charlie timing               | Checked after threshold-based drawing finishes; reaching five cards does not itself stop drawing.                                                |
-| Natural blackjack            | A two-card 21 is treated as a total of 21, with no special priority or payout.                                                                   |
+| Classic mode | Compare totals after checking for busts; Five-Card Charlie is disabled. |
+| Modded mode | A final hand of five or more cards totaling 21 or less qualifies for Charlie. The player is checked first, before the dealer plays. |
+| Charlie timing | Checked after threshold-based drawing finishes; reaching five cards does not itself stop drawing. |
+| Natural blackjack | A two-card 21 is treated as a total of 21, with no special priority or payout. |
 
 Outcome checks occur in this order: player bust → player Charlie → dealer bust → dealer Charlie → compare totals. Equal surviving totals tie.
 
@@ -82,12 +80,28 @@ The count is **per starting hand**: 1,000 simulations means 1,326,000 rounds in 
 
 The exported `blackjack-simulation-complete.csv` contains two sections:
 
-| Section                   | Contents                                                                                         |
-| ------------------------- | ------------------------------------------------------------------------------------------------ |
+| Section | Contents |
+| --- | --- |
 | Grouped by starting total | Number of combinations, mean win/loss/tie percentages, and summed outcome counts for each total. |
-| Detailed hand data        | Individual starting cards, win/loss/tie percentages, counts, and total rounds.                   |
+| Detailed hand data | Individual starting cards, win/loss/tie percentages, counts, and total rounds. |
 
 Grouped percentages average the per-hand percentages already rounded to one decimal place. Hands with the same total can have different compositions; the grouped summary combines them. The export includes section headings and blank separators, so import each section separately when a spreadsheet tool expects a single rectangular table.
+
+## Hosting
+
+The app is served through GitHub Pages. It is also compatible with other static hosts: publish `index.html`, `styles.css`, and the complete `js/` directory together, preserving their paths. There is no server application or generated build folder.
+
+## Tests
+
+Use Node.js 22 or newer:
+
+```sh
+npm test
+```
+
+Tests use Node's built-in test runner; no package installation is required. They cover deck and starting-hand combinations, ace handling, threshold behavior, simulation counts, and CSV output.
+
+Keep changes focused on the relevant module. After a change, run the tests and preview the app to check controls, progress, sorting, and CSV download. Use a feature branch and pull request to review changes before merging into `main`.
 
 ## Project structure
 
@@ -112,22 +126,6 @@ Blackjack-Analyst/
 ```
 
 Rules and simulation logic are independent of the DOM. CSV generation is separate from the download action, making the output easier to verify.
-
-## Development and checks
-
-Use Node.js 22 or newer to run the existing tests:
-
-```sh
-npm test
-```
-
-Tests use Node's built-in test runner; no package installation is required. They cover deck and starting-hand combinations, ace handling, threshold behavior, simulation counts, and CSV output.
-
-Keep changes focused on the relevant module. After a change, run the tests and preview the app to check controls, progress, sorting, and CSV download. Use a feature branch and pull request to review changes before merging into `main`.
-
-## Hosting
-
-The app is served through GitHub Pages. It is also compatible with other static hosts: publish `index.html`, `styles.css`, and the complete `js/` directory together, preserving their paths. There is no server application or generated build folder.
 
 ## Contributing
 
