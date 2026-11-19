@@ -69,3 +69,21 @@ test("CSV groups starting totals and includes detailed counts", () => {
   assert.ok(csv.includes("21,1,60.00,20.00,20.00,6,2,2,10\n"));
   assert.ok(csv.includes('"A♠ K♠",60.0,20.0,20.0,6,2,2,10\n'));
 });
+
+test("the player threshold applies to soft hands: a soft 17 stands at 17", () => {
+  const { hand } = playerStrategy(cards("A", "6"), cards("5", "5"), 17);
+  assert.equal(hand.length, 2);
+  assert.equal(isSoftHand(hand), true);
+});
+
+test("grouped CSV rates come from summed counts, not averaged rounded rates", () => {
+  const h = (c, wins, total) => ({
+    cards: c, wins, losses: total - wins, ties: 0, total,
+    winRate: ((wins / total) * 100).toFixed(1),
+    lossRate: (((total - wins) / total) * 100).toFixed(1),
+    tieRate: "0.0",
+  });
+  const csv = buildCSV({ hands: [h(cards("10", "7"), 1, 3), h(cards("9", "8"), 1, 6)] });
+  // 2 wins in 9 rounds is 22.22%; averaging 33.3 and 16.7 would give 25.00.
+  assert.ok(csv.includes("17,2,22.22,77.78,0.00,2,7,0,9\n"), csv.split("\n").slice(0, 4).join("\n"));
+});

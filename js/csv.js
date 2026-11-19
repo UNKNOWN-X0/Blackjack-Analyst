@@ -15,10 +15,10 @@ export function buildCSV(results) {
     groupedByTotal[startingTotal].push(hand);
   });
 
-  // Calculate mean percentages for each group
+  // Group rates for each starting total
   csv += "GROUPED BY STARTING TOTAL\n";
   csv +=
-    "Starting Total,Count,Mean Win %,Mean Loss %,Mean Tie %,Total Wins,Total Losses,Total Ties,Total Simulations\n";
+    "Starting Total,Count,Win %,Loss %,Tie %,Total Wins,Total Losses,Total Ties,Total Simulations\n";
 
   // Sort by starting total (4 to 21)
   const sortedTotals = Object.keys(groupedByTotal)
@@ -29,27 +29,23 @@ export function buildCSV(results) {
     const hands = groupedByTotal[total];
     const count = hands.length;
 
-    let totalWinRate = 0;
-    let totalLossRate = 0;
-    let totalTieRate = 0;
     let totalWins = 0;
     let totalLosses = 0;
     let totalTies = 0;
     let totalSimulations = 0;
 
     hands.forEach((hand) => {
-      totalWinRate += parseFloat(hand.winRate);
-      totalLossRate += parseFloat(hand.lossRate);
-      totalTieRate += parseFloat(hand.tieRate);
       totalWins += hand.wins;
       totalLosses += hand.losses;
       totalTies += hand.ties;
       totalSimulations += hand.total;
     });
 
-    const meanWinRate = (totalWinRate / count).toFixed(2);
-    const meanLossRate = (totalLossRate / count).toFixed(2);
-    const meanTieRate = (totalTieRate / count).toFixed(2);
+    // Rates come from the summed counts, not from averaging rounded per-hand rates.
+    const rate = (n) => (totalSimulations ? (n / totalSimulations) * 100 : 0).toFixed(2);
+    const meanWinRate = rate(totalWins);
+    const meanLossRate = rate(totalLosses);
+    const meanTieRate = rate(totalTies);
 
     csv += `${total},${count},${meanWinRate},${meanLossRate},${meanTieRate},${totalWins},${totalLosses},${totalTies},${totalSimulations}\n`;
   });

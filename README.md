@@ -68,7 +68,7 @@ Each round starts with a freshly shuffled single deck. The selected starting car
 
 | Rule | Implementation |
 | --- | --- |
-| Player threshold | Hit below the selected total; stand at or above it. This applies to both hard and soft hands despite the UI's “Hard” labels. |
+| Player threshold | Hit below the selected total; stand at or above it. This applies to hard and soft hands alike. |
 | Dealer threshold | Hit below the selected total; stand above it. At the threshold, hit a soft hand when the toggle is enabled. |
 | “Dealer Hits Soft 17” toggle | At the default threshold of 17, this means hit soft 17. With another dealer threshold, the toggle applies to a soft hand at that selected total. |
 | Classic mode | Compare totals after checking for busts; Five-Card Charlie is disabled. |
@@ -90,10 +90,10 @@ The exported `blackjack-simulation-complete.csv` contains two sections:
 
 | Section | Contents |
 | --- | --- |
-| Grouped by starting total | Number of combinations, mean win/loss/tie percentages, and summed outcome counts for each total. |
+| Grouped by starting total | Number of combinations, win/loss/tie percentages from the summed counts, and the summed outcome counts for each total. |
 | Detailed hand data | Individual starting cards, win/loss/tie percentages, counts, and total rounds. |
 
-Grouped percentages average the per-hand percentages already rounded to one decimal place. Hands with the same total can have different compositions; the grouped summary combines them. The export includes section headings and blank separators, so import each section separately when a spreadsheet tool expects a single rectangular table.
+Grouped percentages are computed from the summed counts of the hands in each group. Hands with the same total can have different compositions; the grouped summary combines them. The export includes section headings and blank separators, so import each section separately when a spreadsheet tool expects a single rectangular table.
 
 ## Privacy
 
