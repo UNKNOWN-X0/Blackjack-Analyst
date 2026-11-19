@@ -8,17 +8,13 @@ An honest, fast Monte Carlo explorer for every two-card start: say exactly which
 
 ## Now
 
-**Labels that match the rules** (stated 2026-11-19, [#2](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/2)). The player threshold says "Hard" but covers soft hands too. *Done when* no control says "Hard" for a rule that covers soft hands, and a test pins the behaviour.
-
-**Exact grouped rates in the CSV** (stated 2026-11-19, [#3](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/3)). Group rates average rounded values. *Done when* each grouped rate equals its summed count over its rounds, with a test.
+**Tests in CI** (stated 2026-11-19, [#6](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/6)). The workflow builds Jekyll and never runs `npm test`. *Done when* every push runs `npm test` and a failing test fails the run.
 
 ## Next
 
 **Simulations in a Web Worker** (stated 2026-11-19, [#4](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/4)). Keep the page responsive on large runs, and allow stopping one.
 
 **Confidence intervals** (stated 2026-11-19, [#5](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/5)). Show how much each win rate could move between runs.
-
-**Tests in CI** (stated 2026-11-19, [#6](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/6)). The workflow builds Jekyll and never runs `npm test`.
 
 ## Later
 
