@@ -18,7 +18,7 @@ An honest, fast Monte Carlo explorer for every two-card start: say exactly which
 
 ## Later
 
-**Strategy scope** (stated 2026-11-19, [#7](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/7)). Stay a threshold explorer or add a basic-strategy comparison; waits on a decision.
+**Strategy scope** (stated 2026-11-19, [#7](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues/7)). Add a basic-strategy player (dealer-upcard aware, with doubling and splitting) to compare against the threshold player.
 
 ## Not planned
 
