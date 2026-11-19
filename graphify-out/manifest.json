@@ -18,10 +18,10 @@
     "semantic_hash": "7fc90318e524b4cb0f1a725e9ed89c47"
   },
   "js/csv.js": {
-    "mtime": 1792756476.880435,
-    "seen": 1792797278.2290938,
-    "ast_hash": "dfc0b57f216f08a057cb83a78bd903fd",
-    "semantic_hash": "dfc0b57f216f08a057cb83a78bd903fd"
+    "mtime": 1795052845.8815882,
+    "seen": 1795076483.681907,
+    "ast_hash": "92827f53658b3e65a3b6dc6234d389f6",
+    "semantic_hash": ""
   },
   "js/results.js": {
     "mtime": 1792756476.8862422,
@@ -60,27 +60,39 @@
     "semantic_hash": "eac4466cd08b87896717efca363ab05f"
   },
   "tests/core.test.js": {
-    "mtime": 1792756476.964841,
-    "seen": 1792797278.2291,
-    "ast_hash": "190e33b3df0ff6afcc52ff9a9a24e0da",
-    "semantic_hash": "190e33b3df0ff6afcc52ff9a9a24e0da"
+    "mtime": 1795052845.921228,
+    "seen": 1795076483.681914,
+    "ast_hash": "ec464f9c4ec6c21bb3566a2eaab9cb50",
+    "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1792758296.0706115,
-    "seen": 1792797278.229101,
-    "ast_hash": "78d5a505c376f1fd0764acc5cad8ff76",
-    "semantic_hash": "78d5a505c376f1fd0764acc5cad8ff76"
+    "mtime": 1795052845.8823695,
+    "seen": 1795076483.681916,
+    "ast_hash": "8d2eaf7d02380279548698953fab83f9",
+    "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1792756476.8414972,
-    "seen": 1792797278.2291021,
-    "ast_hash": "7ef193dec263ca96c2dd00fd137bafa1",
-    "semantic_hash": "7ef193dec263ca96c2dd00fd137bafa1"
+    "mtime": 1795052845.8812914,
+    "seen": 1795076483.681918,
+    "ast_hash": "f8134b8d1f66d974136ef005d470ab25",
+    "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1792868331.155128,
-    "seen": 1792876567.095398,
-    "ast_hash": "1fd840c3868657581070dd0b1de8365e",
+    "mtime": 1793023758.056856,
+    "seen": 1795076483.6819148,
+    "ast_hash": "7af4a07753df0476e10cf438ef59251d",
+    "semantic_hash": ""
+  },
+  "ROADMAP.md": {
+    "mtime": 1795076410.1041124,
+    "seen": 1795076483.681917,
+    "ast_hash": "1aecea1b704286b38acbfeb104ac27de",
+    "semantic_hash": ""
+  },
+  "assets/preview.png": {
+    "mtime": 1795051214.460121,
+    "seen": 1795076483.6819189,
+    "ast_hash": "eb88f714901dea7789afc63527a34004",
     "semantic_hash": ""
   }
 }

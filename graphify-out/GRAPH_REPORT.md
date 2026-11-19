@@ -1,61 +1,63 @@
-# Graph Report - BlackjackAnalyst  (2026-10-26)
+# Graph Report - Blackjack-Analyst  (2026-11-19)
 
 ## Corpus Check
-- 13 files · ~4,689 words
+- 14 files · ~4,907 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 2, .css 1)
 
 ## Summary
-- 67 nodes · 119 edges · 7 communities (5 shown, 2 thin omitted)
+- 74 nodes · 125 edges · 9 communities (7 shown, 2 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b1e0de65`
+- Built from commit: `464fbb4d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- Blackjack Rules Engine
+- rules.js
 - Application Interface and Guide
 - GitHub Pages Workflow
 - Simulation and Results
 - Project Configuration
 - CSV Export
 - Project instructions
+- core.test.js
+- Roadmap
 
 ## God Nodes (most connected - your core abstractions)
 1. `getHandValue()` - 9 edges
 2. `simulateRound()` - 8 edges
-3. `runSimulation()` - 6 edges
+3. `Roadmap` - 6 edges
 4. `dealerStrategy()` - 6 edges
-5. `Monte Carlo simulation of starting hands` - 6 edges
-6. `createDeck()` - 5 edges
-7. `playerStrategy()` - 5 edges
+5. `runSimulation()` - 6 edges
+6. `Monte Carlo simulation of starting hands` - 6 edges
+7. `createDeck()` - 5 edges
 8. `isFiveCardCharlie()` - 5 edges
-9. `generateAllHands()` - 5 edges
-10. `simulateHand()` - 5 edges
+9. `playerStrategy()` - 5 edges
+10. `generateAllHands()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `buildCSV()` --calls--> `getHandValue()`  [EXTRACTED]
+  js/csv.js → js/rules.js
+- `simulateRound()` --calls--> `createDeck()`  [EXTRACTED]
+  js/simulation.js → js/rules.js
 - `runSimulation()` --calls--> `generateAllHands()`  [EXTRACTED]
   js/app.js → js/simulation.js
 - `runSimulation()` --calls--> `simulateHand()`  [EXTRACTED]
   js/app.js → js/simulation.js
-- `buildCSV()` --calls--> `getHandValue()`  [EXTRACTED]
-  js/csv.js → js/rules.js
-- `runSimulation()` --calls--> `displayResults()`  [EXTRACTED]
-  js/app.js → js/ui.js
-- `runSimulation()` --calls--> `updateProgress()`  [EXTRACTED]
-  js/app.js → js/ui.js
+- `generateAllHands()` --calls--> `createDeck()`  [EXTRACTED]
+  js/simulation.js → js/rules.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (7 total, 2 thin omitted)
+## Communities (9 total, 2 thin omitted)
 
-### Community 0 - "Blackjack Rules Engine"
-Cohesion: 0.35
-Nodes (10): createDeck(), dealerStrategy(), getHandValue(), isFiveCardCharlie(), isSoftHand(), playerStrategy(), shuffleDeck(), generateAllHands() (+2 more)
+### Community 0 - "rules.js"
+Cohesion: 0.54
+Nodes (7): dealerStrategy(), getHandValue(), isFiveCardCharlie(), isSoftHand(), playerStrategy(), shuffleDeck(), simulateRound()
 
 ### Community 1 - "Application Interface and Guide"
 Cohesion: 0.17
@@ -73,9 +75,17 @@ Nodes (6): runSimulation(), sortResults(), state, displayResults(), updateProgre
 Cohesion: 0.33
 Nodes (5): name, private, scripts, test, type
 
+### Community 7 - "core.test.js"
+Cohesion: 0.39
+Nodes (3): createDeck(), generateAllHands(), simulateHand()
+
+### Community 8 - "Roadmap"
+Cohesion: 0.29
+Nodes (6): Direction, Later, Next, Not planned, Now, Roadmap
+
 ## Knowledge Gaps
 - **1 isolated node(s):** `Freshly shuffled single deck per round`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 20 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 26 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
