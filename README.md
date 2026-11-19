@@ -137,6 +137,12 @@ assets/preview.png  Screenshot for this README
 
 Rules and simulation logic are independent of the DOM. CSV generation is separate from the download action, making the output easier to verify.
 
+## Project documents
+
+| File | What it covers |
+| --- | --- |
+| [ROADMAP.md](ROADMAP.md) | What is planned next, with an issue per item |
+
 ## Contributing
 
 Bug reports and focused pull requests are welcome. For a simulation issue, include the selected rules, mode, sample count, and the behavior you expected. For a UI issue, include your browser and reproduction steps.
