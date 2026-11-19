@@ -19,7 +19,11 @@ A browser-based Monte Carlo simulator for blackjack starting hands. It estimates
 
 ## Getting started
 
-### Run locally
+### Use it online
+
+Open the [live app](https://unknown-x0.github.io/Blackjack-Analyst/).
+
+### Run it yourself
 
 Clone the repository, then open its folder in VS Code:
 
@@ -40,6 +44,8 @@ Open [localhost:8000](http://localhost:8000). Stop the server with **Ctrl+C**.
 
 Serve the project over HTTP: opening `index.html` directly as a `file://` URL can block JavaScript module loading. No `npm install` or build command is needed.
 
+## Usage
+
 ### Run an analysis
 
 1. Set the player and dealer stand thresholds.
@@ -50,13 +56,13 @@ Serve the project over HTTP: opening `index.html` directly as a `file://` URL ca
 
 The defaults are player 17, dealer 17, dealer hits soft 17 enabled, Modded mode, and 1,000 simulations per hand.
 
-## Understanding the model
+### Understanding the model
 
 This is a simulator for **fixed threshold strategies**, not an optimal basic-strategy solver. Player decisions depend on the player's total, not the dealer's upcard.
 
 Each round starts with a freshly shuffled single deck. The selected starting cards are removed, two cards are dealt to the dealer, and the player and dealer draw according to their configured thresholds. Aces count as 1 or 11 to produce the highest non-busting total.
 
-### Current rule behavior
+#### Current rule behavior
 
 | Rule | Implementation |
 | --- | --- |
@@ -72,7 +78,7 @@ Outcome checks occur in this order: player bust → player Charlie → dealer bu
 
 Splitting, doubling down, surrender, insurance, side bets, dealer peeking, multi-deck shoes, and bankroll or payout calculations are not modeled.
 
-## Reading and exporting results
+### Reading and exporting results
 
 Results are Monte Carlo estimates and vary between runs. Increasing the sample size generally reduces sampling noise but takes longer; the app does not calculate confidence intervals. The “best” hand is the highest observed win rate in that run.
 
@@ -87,7 +93,13 @@ The exported `blackjack-simulation-complete.csv` contains two sections:
 
 Grouped percentages average the per-hand percentages already rounded to one decimal place. Hands with the same total can have different compositions; the grouped summary combines them. The export includes section headings and blank separators, so import each section separately when a spreadsheet tool expects a single rectangular table.
 
-## Hosting
+## Privacy
+
+Nothing is stored and nothing is sent: simulations run in your browser, and **Export CSV** saves the file to your computer.
+
+## Development
+
+### Hosting
 
 The app is served through GitHub Pages. It is also compatible with other static hosts: publish `index.html`, `styles.css`, and the complete `js/` directory together, preserving their paths. There is no server application or generated build folder.
 
