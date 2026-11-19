@@ -7,6 +7,8 @@ A browser-based Monte Carlo simulator for blackjack starting hands. It estimates
 
 **[Open Blackjack Analyst →](https://unknown-x0.github.io/Blackjack-Analyst/)** · [Report an issue](https://github.com/UNKNOWN-X0/Blackjack-Analyst/issues)
 
+![Blackjack Analyst](assets/preview.png)
+
 ## Features
 
 - **Every starting combination:** analyze individual cards and suits, not just hand totals.
@@ -118,23 +120,19 @@ Keep changes focused on the relevant module. After a change, run the tests and p
 ## Project structure
 
 ```text
-Blackjack-Analyst/
-├── index.html          # Page structure and module entry point
-├── styles.css          # Layout, theme, and responsive styling
-├── js/
-│   ├── app.js          # Events, simulation orchestration, and progress
-│   ├── state.js        # Settings and current results
-│   ├── rules.js        # Decks, card values, and hit/stand rules
-│   ├── simulation.js   # Starting combinations, rounds, and statistics
-│   ├── results.js      # Table sorting
-│   ├── ui.js           # Controls, summaries, and table rendering
-│   └── csv.js          # CSV generation and download
-├── tests/
-│   └── core.test.js    # Core rules, simulation, and CSV checks
-├── .github/workflows/  # Repository automation
-├── .gitignore
-├── package.json        # ES module setting and test command
-└── README.md
+index.html          Page structure and module entry point
+styles.css          Layout, theme, and responsive styling
+js/app.js           Events, simulation orchestration, and progress
+js/state.js         Settings and current results
+js/rules.js         Decks, card values, and hit/stand rules
+js/simulation.js    Starting combinations, rounds, and statistics
+js/results.js       Table sorting
+js/ui.js            Controls, summaries, and table rendering
+js/csv.js           CSV generation and download
+tests/core.test.js  Core rules, simulation, and CSV checks
+.github/workflows/  Repository automation
+package.json        ES module setting and test command
+assets/preview.png  Screenshot for this README
 ```
 
 Rules and simulation logic are independent of the DOM. CSV generation is separate from the download action, making the output easier to verify.
