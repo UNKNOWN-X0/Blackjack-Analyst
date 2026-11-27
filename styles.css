@@ -107,6 +107,11 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .header-bar-content { padding: 1rem; }
+  .header-bar-right { display: none; }
+}
+
 /* Left Panel */
 .left-panel {
   display: flex;

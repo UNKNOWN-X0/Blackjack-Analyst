@@ -90,6 +90,18 @@ export function generateAllHands() {
   return hands;
 }
 
+export function winInterval(wins, total) {
+  if (total === 0) return { lower: 0, upper: 100 };
+  const z = 1.96;
+  const p = wins / total;
+  const denominator = 1 + (z * z) / total;
+  const center = (p + (z * z) / (2 * total)) / denominator;
+  const margin =
+    (z / denominator) *
+    Math.sqrt((p * (1 - p)) / total + (z * z) / (4 * total * total));
+  return { lower: (center - margin) * 100, upper: (center + margin) * 100 };
+}
+
 export function simulateHand(
   hand,
   actualSimulations,
@@ -120,6 +132,7 @@ export function simulateHand(
   const winRate = (wins / total) * 100;
   const lossRate = (losses / total) * 100;
   const tieRate = (ties / total) * 100;
+  const { lower, upper } = winInterval(wins, total);
 
   return {
     hand: `${hand[0].rank}${hand[0].suit} ${hand[1].rank}${hand[1].suit}`,
@@ -128,6 +141,8 @@ export function simulateHand(
     winRate: winRate.toFixed(1),
     lossRate: lossRate.toFixed(1),
     tieRate: tieRate.toFixed(1),
+    winLower: lower,
+    winUpper: upper,
     wins,
     losses,
     ties,

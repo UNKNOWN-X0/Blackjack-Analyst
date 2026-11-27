@@ -8,7 +8,7 @@ import {
   dealerStrategy,
   isFiveCardCharlie,
 } from "../js/rules.js";
-import { generateAllHands, simulateHand } from "../js/simulation.js";
+import { generateAllHands, simulateHand, winInterval } from "../js/simulation.js";
 import { buildCSV } from "../js/csv.js";
 const cards = (...ranks) => ranks.map((rank) => ({ rank, suit: "♠" }));
 test("deck and starting hands contain each unique combination once", () => {
@@ -66,8 +66,8 @@ test("CSV groups starting totals and includes detailed counts", () => {
     total: 10,
   };
   const csv = buildCSV({ hands: [hand] });
-  assert.ok(csv.includes("21,1,60.00,20.00,20.00,6,2,2,10\n"));
-  assert.ok(csv.includes('"A♠ K♠",60.0,20.0,20.0,6,2,2,10\n'));
+  assert.match(csv, /21,1,60\.00,\d+\.\d{2},\d+\.\d{2},20\.00,20\.00,6,2,2,10/);
+  assert.match(csv, /"A♠ K♠",60\.0,\d+\.\d{2},\d+\.\d{2},20\.0,20\.0,6,2,2,10/);
 });
 
 test("the player threshold applies to soft hands: a soft 17 stands at 17", () => {
@@ -85,5 +85,17 @@ test("grouped CSV rates come from summed counts, not averaged rounded rates", ()
   });
   const csv = buildCSV({ hands: [h(cards("10", "7"), 1, 3), h(cards("9", "8"), 1, 6)] });
   // 2 wins in 9 rounds is 22.22%; averaging 33.3 and 16.7 would give 25.00.
-  assert.ok(csv.includes("17,2,22.22,77.78,0.00,2,7,0,9\n"), csv.split("\n").slice(0, 4).join("\n"));
+  assert.match(csv, /17,2,22\.22,\d+\.\d{2},\d+\.\d{2},77\.78,0\.00,2,7,0,9/);
+});
+
+test("Wilson interval handles boundaries and narrows with more rounds", () => {
+  assert.deepEqual(winInterval(0, 0), { lower: 0, upper: 100 });
+  assert.equal(winInterval(0, 100).lower, 0);
+  assert.ok(Math.abs(winInterval(100, 100).upper - 100) < 1e-10);
+  assert.ok(winInterval(45, 100).lower < 45);
+  assert.ok(winInterval(45, 100).upper > 45);
+  assert.ok(
+    winInterval(450, 1000).upper - winInterval(450, 1000).lower <
+      winInterval(45, 100).upper - winInterval(45, 100).lower,
+  );
 });

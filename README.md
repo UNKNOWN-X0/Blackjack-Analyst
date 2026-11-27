@@ -1,6 +1,7 @@
 # Blackjack Analyst
 
 [![Live site](https://img.shields.io/badge/live%20site-GitHub%20Pages-2ea44f?logo=github)](https://unknown-x0.github.io/Blackjack-Analyst/)
+[![Checks](https://github.com/UNKNOWN-X0/Blackjack-Analyst/actions/workflows/checks.yml/badge.svg)](https://github.com/UNKNOWN-X0/Blackjack-Analyst/actions/workflows/checks.yml)
 [![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 A browser-based Monte Carlo simulator for blackjack starting hands. It estimates win, loss, and tie rates for all **1,326 unique two-card combinations** from a single 52-card deck, using configurable player and dealer hit/stand thresholds.
@@ -15,7 +16,7 @@ A browser-based Monte Carlo simulator for blackjack starting hands. It estimates
 - **Configurable rules:** adjust player and dealer stand thresholds from 12 to 20 and toggle the dealer's soft-hand behavior.
 - **Two modes:** Classic disables Five-Card Charlie; Modded enables it for both player and dealer.
 - **Adjustable sample size:** choose 100, 1,000, 10,000, or 100,000 simulations per starting hand, or enter a custom count.
-- **Interactive results:** compare percentages, outcome counts, visual bars, and the best observed starting hand.
+- **Interactive results:** compare percentages with 95% confidence intervals, outcome counts, visual bars, and the best observed starting hand.
 - **CSV export:** download summaries grouped by starting total plus results for every individual combination.
 - **No build step:** runs in the browser with no runtime dependencies or backend.
 
@@ -82,7 +83,7 @@ Splitting, doubling down, surrender, insurance, side bets, dealer peeking, multi
 
 ### Reading and exporting results
 
-Results are Monte Carlo estimates and vary between runs. Increasing the sample size generally reduces sampling noise but takes longer; the app does not calculate confidence intervals. The “best” hand is the highest observed win rate in that run.
+Results are Monte Carlo estimates and vary between runs. Each win rate shows a 95% Wilson confidence interval based on its wins and rounds; increasing the sample size generally narrows the interval but takes longer. The “best” hand has the highest observed win rate in that run. Its card warns when its interval overlaps the runner-up's; that comparison does not prove the hands differ.
 
 The count is **per starting hand**: 1,000 simulations means 1,326,000 rounds in total. At 100,000 per hand, the browser performs 132,600,000 rounds. Large runs can be slow because computation runs on the browser's main thread.
 
@@ -90,8 +91,8 @@ The exported `blackjack-simulation-complete.csv` contains two sections:
 
 | Section | Contents |
 | --- | --- |
-| Grouped by starting total | Number of combinations, win/loss/tie percentages from the summed counts, and the summed outcome counts for each total. |
-| Detailed hand data | Individual starting cards, win/loss/tie percentages, counts, and total rounds. |
+| Grouped by starting total | Number of combinations, win/loss/tie percentages from the summed counts, 95% win interval bounds, and the summed outcome counts for each total. |
+| Detailed hand data | Individual starting cards, win/loss/tie percentages, 95% win interval bounds, counts, and total rounds. |
 
 Grouped percentages are computed from the summed counts of the hands in each group. Hands with the same total can have different compositions; the grouped summary combines them. The export includes section headings and blank separators, so import each section separately when a spreadsheet tool expects a single rectangular table.
 

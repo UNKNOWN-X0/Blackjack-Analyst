@@ -82,6 +82,12 @@ export function displayResults() {
   document.getElementById("bestWinRate").textContent = `${bestHand.winRate}%`;
   document.getElementById("bestWinCount").textContent =
     `${bestHand.wins} / ${bestHand.total} Wins`;
+  const runnerUp = [...state.results.hands]
+    .sort((a, b) => b.wins / b.total - a.wins / a.total)[1];
+  document.getElementById("bestUncertainty").textContent =
+    runnerUp && bestHand.winLower <= runnerUp.winUpper
+      ? "Lead is within sampling uncertainty (95% intervals overlap)."
+      : "Lead exceeds the runner-up's 95% interval.";
 
   // Update sort indicators
   document.querySelectorAll(".sortable").forEach((th) => {
@@ -97,7 +103,7 @@ export function displayResults() {
     const row = document.createElement("tr");
     row.innerHTML = `
             <td>${hand.hand}</td>
-            <td class="text-right win-rate">${hand.winRate}%</td>
+            <td class="text-right win-rate">${hand.winRate}% <small>(${hand.winLower.toFixed(1)}–${hand.winUpper.toFixed(1)}%)</small></td>
             <td class="text-right loss-rate">${hand.lossRate}%</td>
             <td class="text-right tie-rate">${hand.tieRate}%</td>
             <td class="text-right result-count">${hand.wins}</td>
