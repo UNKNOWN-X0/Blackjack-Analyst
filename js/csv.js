@@ -1,4 +1,5 @@
 import { getHandValue } from "./rules.js";
+import { winInterval } from "./simulation.js";
 
 export function buildCSV(results) {
   let csv = "";
@@ -18,7 +19,7 @@ export function buildCSV(results) {
   // Group rates for each starting total
   csv += "GROUPED BY STARTING TOTAL\n";
   csv +=
-    "Starting Total,Count,Win %,Loss %,Tie %,Total Wins,Total Losses,Total Ties,Total Simulations\n";
+    "Starting Total,Count,Win %,Win Lower 95 %,Win Upper 95 %,Loss %,Tie %,Total Wins,Total Losses,Total Ties,Total Simulations\n";
 
   // Sort by starting total (4 to 21)
   const sortedTotals = Object.keys(groupedByTotal)
@@ -46,17 +47,19 @@ export function buildCSV(results) {
     const meanWinRate = rate(totalWins);
     const meanLossRate = rate(totalLosses);
     const meanTieRate = rate(totalTies);
+    const interval = winInterval(totalWins, totalSimulations);
 
-    csv += `${total},${count},${meanWinRate},${meanLossRate},${meanTieRate},${totalWins},${totalLosses},${totalTies},${totalSimulations}\n`;
+    csv += `${total},${count},${meanWinRate},${interval.lower.toFixed(2)},${interval.upper.toFixed(2)},${meanLossRate},${meanTieRate},${totalWins},${totalLosses},${totalTies},${totalSimulations}\n`;
   });
 
   // Add separator
   csv += "\n\nDETAILED HAND DATA\n";
 
   // Original detailed data
-  csv += "Hand,Win %,Loss %,Tie %,Wins,Losses,Ties,Total\n";
+  csv += "Hand,Win %,Win Lower 95 %,Win Upper 95 %,Loss %,Tie %,Wins,Losses,Ties,Total\n";
   results.hands.forEach((hand) => {
-    csv += `"${hand.hand}",${hand.winRate},${hand.lossRate},${hand.tieRate},${hand.wins},${hand.losses},${hand.ties},${hand.total}\n`;
+    const interval = winInterval(hand.wins, hand.total);
+    csv += `"${hand.hand}",${hand.winRate},${interval.lower.toFixed(2)},${interval.upper.toFixed(2)},${hand.lossRate},${hand.tieRate},${hand.wins},${hand.losses},${hand.ties},${hand.total}\n`;
   });
 
   return csv;

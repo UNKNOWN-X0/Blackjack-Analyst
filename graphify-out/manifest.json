@@ -1,10 +1,4 @@
 {
-  ".github/workflows/jekyll-docker.yml": {
-    "mtime": 1792756476.6890137,
-    "seen": 1792797278.229088,
-    "ast_hash": "29fe146da84567bcc68665ce404ff135",
-    "semantic_hash": "29fe146da84567bcc68665ce404ff135"
-  },
   ".vscode/settings.json": {
     "mtime": 1792756476.7047837,
     "seen": 1792797278.2290921,
@@ -18,9 +12,9 @@
     "semantic_hash": "7fc90318e524b4cb0f1a725e9ed89c47"
   },
   "js/csv.js": {
-    "mtime": 1795052845.8815882,
-    "seen": 1795076483.681907,
-    "ast_hash": "92827f53658b3e65a3b6dc6234d389f6",
+    "mtime": 1795816343.6950364,
+    "seen": 1795816379.41294,
+    "ast_hash": "c8c1af587319a0ab4ced19aa474fef1f",
     "semantic_hash": ""
   },
   "js/results.js": {
@@ -36,10 +30,10 @@
     "semantic_hash": "377f511b1050b478dd88800829c8fc89"
   },
   "js/simulation.js": {
-    "mtime": 1792753485.0658364,
-    "seen": 1792797278.229097,
-    "ast_hash": "c2dc011d069e2a3546150e5e70d701db",
-    "semantic_hash": "c2dc011d069e2a3546150e5e70d701db"
+    "mtime": 1795816343.627599,
+    "seen": 1795816379.4129431,
+    "ast_hash": "3ee60243151d18c5c2bfaaae9589a705",
+    "semantic_hash": ""
   },
   "js/state.js": {
     "mtime": 1792756476.9034474,
@@ -48,10 +42,10 @@
     "semantic_hash": "c193792dcbb3db4f43f26afd8397ea97"
   },
   "js/ui.js": {
-    "mtime": 1792756476.9134755,
-    "seen": 1792797278.229098,
-    "ast_hash": "ccd32456fdf398566dff7a1c207f3dd5",
-    "semantic_hash": "ccd32456fdf398566dff7a1c207f3dd5"
+    "mtime": 1795816343.6539726,
+    "seen": 1795816379.4129448,
+    "ast_hash": "96805430ade1988b7259c8877f80205e",
+    "semantic_hash": ""
   },
   "package.json": {
     "mtime": 1792751894.4831839,
@@ -60,21 +54,21 @@
     "semantic_hash": "eac4466cd08b87896717efca363ab05f"
   },
   "tests/core.test.js": {
-    "mtime": 1795052845.921228,
-    "seen": 1795076483.681914,
-    "ast_hash": "ec464f9c4ec6c21bb3566a2eaab9cb50",
+    "mtime": 1795816370.2254422,
+    "seen": 1795816379.412947,
+    "ast_hash": "dcbb3bf6dd6f8052ccc4c4639142fe12",
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1795052845.8823695,
-    "seen": 1795076483.681916,
-    "ast_hash": "8d2eaf7d02380279548698953fab83f9",
+    "mtime": 1795816362.1826763,
+    "seen": 1795816379.412949,
+    "ast_hash": "72787ca232544b149d92902e1a67c4a7",
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1795052845.8812914,
-    "seen": 1795076483.681918,
-    "ast_hash": "f8134b8d1f66d974136ef005d470ab25",
+    "mtime": 1795816343.6740358,
+    "seen": 1795816379.41295,
+    "ast_hash": "82f27d2c8ddde51d8fb426c0a2c27ca5",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -84,15 +78,27 @@
     "semantic_hash": ""
   },
   "ROADMAP.md": {
-    "mtime": 1795076410.1041124,
-    "seen": 1795076483.681917,
-    "ast_hash": "1aecea1b704286b38acbfeb104ac27de",
+    "mtime": 1795078219.3525584,
+    "seen": 1795786888.571167,
+    "ast_hash": "5d27eeffcb14423bb23137b6bebc3627",
     "semantic_hash": ""
   },
   "assets/preview.png": {
     "mtime": 1795051214.460121,
     "seen": 1795076483.6819189,
     "ast_hash": "eb88f714901dea7789afc63527a34004",
+    "semantic_hash": ""
+  },
+  ".github/workflows/checks.yml": {
+    "mtime": 1795786875.0230353,
+    "seen": 1795786888.571149,
+    "ast_hash": "f89a482b05ce9113280703fd2fa6f550",
+    "semantic_hash": ""
+  },
+  ".impeccable/config.json": {
+    "mtime": 1795076735.5058904,
+    "seen": 1795786888.571152,
+    "ast_hash": "710b611e77419127dbd092943cd56880",
     "semantic_hash": ""
   }
 }
